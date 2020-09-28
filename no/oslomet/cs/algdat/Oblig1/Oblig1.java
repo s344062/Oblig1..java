@@ -26,7 +26,7 @@ public class Oblig1 {
      */
     public static int maks(int[] a) {
         if (a.length<1)
-            {throw new UnsupportedOperationException("Tabellen er tom!");}
+            {throw new NoSuchElementException("Tabellen er tom!");}
 
         for (int i=1; i<a.length; i++){
             if (a[i-1]> a[i]){
@@ -42,7 +42,7 @@ public class Oblig1 {
 
         int antallOmbyttinger= 0;
 
-        for (int i=1;i<a.length;++i){
+        for (int i=1;i<a.length; i++){
             if (a[i-1]>a[i]){
                 bytt(a, i-1, i);
                 antallOmbyttinger++;
@@ -53,18 +53,20 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
-            if (a.length==0) {
-                return 0;
+        //throw new UnsupportedOperationException();
+        int antallSortert = 1;
+        if (a.length==0){
+            return 0;
+        }
+        for (int i=0; i<a.length-1; i++){
+            if (a[i]> a[i+1]){
+                throw new IllegalStateException("Ikke sortert i stigende rekkefølge");
             }
-
-        int antallSortert= 1;
-        for (int i=1; i<a.length; ++i){
-            if (a[i-1]>a[i]){
-                bytt(a, i-1, i);
+            else if (a[i] != a[i+1]){
                 antallSortert++;
             }
         }
+
         return antallSortert;
     }
 
@@ -91,23 +93,26 @@ public class Oblig1 {
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
         //throw new UnsupportedOperationException();
+        int lengde = a.length;
+        int left = 0, right = lengde - 1;
 
-        int left =0,  right=a.length - 1;
-        while (left<right){
-            while (a[left]%2 == 0 && left<right)
-                left++;
-            while (a[right]% 2 ==1 && left>right)
+        if (a.length == 0)
+            return;
+        while (left <= right) {
+            if ((a[left] % 2 == 0) && !((a[right] % 2) == 0))
+                bytt(a, right++, left--);
+            else if ((a[left]) % 2 == 0) {
                 right--;
-            if (left<right){
-                int temp = a[left];
-                a[left]= a[right];
-                a[right]= temp;
+            } else if (!((a[right]) == 0)) {
                 left++;
-                right--;
+            } else if (!((a[left] % 2) == 0) && ((a[right] % 2) == 0)) {
+                right++;
+                left--;
             }
         }
+        delsortering(a, 0, left);
+        delsortering(a, left, lengde);
     }
-
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
         //throw new UnsupportedOperationException();
@@ -131,20 +136,22 @@ public class Oblig1 {
     public static String flett(String s, String t) {
         //throw new UnsupportedOperationException();
 
+
         char [] c= s.toCharArray();
         char [] d= t.toCharArray();
-        char [] flett= new char [c.length + d.length];
+        int lengde= c.length+ d.length;
 
-        int k= Math.min(c.length, d.length);
-
-        for (int i=0, j=0; i<k; ++i){
-            flett[j++]= c[i];
-            flett[j++]= d[i];
+        StringBuilder sb= new StringBuilder();
+        for (int i=0; j<lengde; ++i){
+            if (c.length< i){
+                sb.append(c[i]);
+            }
+            if (d.length<i){
+                sb.append(d[i]);
+            }
         }
 
-        System.arraycopy(c, k, flett, 2*k, c.length - k);
-        System.arraycopy(d, k, flett, 2*k, c.length - k);
-        return String.valueOf(flett);
+        return sb.toString();
     }
 
     /// 7b)
@@ -169,7 +176,6 @@ public class Oblig1 {
         }
         return stringBuilder.toString();
     }
-
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new UnsupportedOperationException();
