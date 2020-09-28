@@ -3,6 +3,7 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.NoSuchElementException;
 
 public class Oblig1 {
     private Oblig1() {}
@@ -24,25 +25,26 @@ public class Oblig1 {
 
      */
     public static int maks(int[] a) {
-        throw new UnsupportedOperationException("Tabellen er tom!");
+        if (a.length<1)
+            {throw new UnsupportedOperationException("Tabellen er tom!");}
 
-        int j = 0;
-
-        for (int i = 1; i < a.length; ++i) {
-            if (a[i] > a[j]) j = i;
+        for (int i=1; i<a.length; i++){
+            if (a[i-1]> a[i]){
+                bytt(a, i-1, i);
+            }
         }
-        return j;
+        return a[a.length-1];
     }
 
     public static int ombyttinger(int[] a) {
-        throw new UnsupportedOperationException();
-        if (a.length<1){throw new UnsupportedOperationException();}
+        //throw new UnsupportedOperationException();
+        if (a.length<1){throw new NoSuchElementException("Tom tabell!");}
 
         int antallOmbyttinger= 0;
 
         for (int i=1;i<a.length;++i){
-            if (a[i+1]>a[i]){
-                bytt(a, i+1, i);
+            if (a[i-1]>a[i]){
+                bytt(a, i-1, i);
                 antallOmbyttinger++;
             }
         }
@@ -52,11 +54,11 @@ public class Oblig1 {
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
         throw new UnsupportedOperationException();
-        {
-            if (antallUlikeSortert(1))
-                return 1;
-        }
-        int antallSortert= 0;
+            if (a.length==0) {
+                return 0;
+            }
+
+        int antallSortert= 1;
         for (int i=1; i<a.length; ++i){
             if (a[i-1]>a[i]){
                 bytt(a, i-1, i);
@@ -68,11 +70,11 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
-        {
+        //throw new UnsupportedOperationException();
+
             if (a.length<2)
                 return a.length;
-        }
+
         int antallUlike= 1;
 
         for (int i=1;i<a.length;++i){
@@ -88,7 +90,7 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
 
         int left =0,  right=a.length - 1;
         while (left<right){
@@ -108,11 +110,11 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
         if (a.length> 1){
-            char temp= a[a.length-1];
+           char temp = a[a.length - 1 ];
 
-            for (int i=a.length-1;i>0; --1){
+            for (int i=a.length-1;i>0; --i){
                 a[i]= a[i-1];
             }
             a[0]= temp;
@@ -128,6 +130,7 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
         //throw new UnsupportedOperationException();
+
         char [] c= s.toCharArray();
         char [] d= t.toCharArray();
         char [] flett= new char [c.length + d.length];
@@ -146,7 +149,7 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
         if (s.length==0)
             return "";
         int k= s[0].length();
