@@ -175,7 +175,7 @@ public class Oblig1 {
         }
         return resultat;
     }
-        return
+    
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new UnsupportedOperationException();
