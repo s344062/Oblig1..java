@@ -101,26 +101,43 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    public static void delsortering(int[] a) {
-        //throw new UnsupportedOperationException();
-        int lengde = a.length;
-        int left = 0, right = lengde - 1;
+    public static int partisjonering (int a [], int v, int h){
+        int skilleverdi = a[h];
+        int i = (v-1);
+        for (int j= v; j<h; j++){
+            //Taller er mindre enn skilleverdi
+            if (a[j] < skilleverdi){
+                i++;
 
-        if (a.length == 0)
-            return;
-        while (left <= right) { // bruker while-løkke for å dele i to sorterte deler
-            if ((a[left] % 2 == 0) && !((a[right] % 2) == 0))
-                bytt(a, right++, left--);
-            else if ((a[left]) % 2 == 0) {
-                right--;
-            } else if (!((a[right]) == 0)) {
-                left++;
-            } else if (!((a[left] % 2) == 0) && ((a[right] % 2) == 0)) {
-                right++;
-                left--;
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
             }
         }
+        int temp = a [i+1];
+        a[i+1]= a[h];
+        a[h]= temp;
+        return i+1;
     }
+
+    public static void partisjoneringen(int []a, int v, int h){
+        if (v >= h) return;  // bruker if setning for å finne om det er tomt
+        int k = partisjonering(a, v, h);
+        partisjoneringen(a, v, k - 1);     // sorterer a[v:k-1]
+        partisjoneringen(a, k + 1, h);     // sorterer a[k+1:h]
+    }
+    public static void delsortering(int[] a){
+        int oddetall = 0;
+        for(int i = 0; i < a.length; i++){
+            if(a[i] % 2 != 0){
+                bytt(a,i,oddetall);
+                oddetall++;
+            }
+        }
+        partisjoneringen(a,0,oddetall-1);
+        partisjoneringen(a,oddetall,a.length-1);
+    }
+
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
         //throw new UnsupportedOperationException();
