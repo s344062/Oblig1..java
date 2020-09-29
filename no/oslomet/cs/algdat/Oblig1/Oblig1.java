@@ -111,8 +111,6 @@ public class Oblig1 {
                 left--;
             }
         }
-        delsortering(a, 0, left);
-        delsortering(a, left, lengde);
     }
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
