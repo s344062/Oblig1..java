@@ -28,7 +28,7 @@ public class Oblig1 {
         if (a.length<1)
             {throw new NoSuchElementException("Tabellen er tom!");}
 
-        for (int i=1; i<a.length; i++){
+        for (int i=1; i<a.length; i++){ // bruker for-løkke for å finne antall sammenligner
             if (a[i-1]> a[i]){
                 bytt(a, i-1, i);
             }
@@ -40,9 +40,10 @@ public class Oblig1 {
         //throw new UnsupportedOperationException();
         if (a.length<1){throw new NoSuchElementException("Tom tabell!");}
 
-        int antallOmbyttinger= 0;
+        int antallOmbyttinger= 0; //hvis ingen ombyttinger skjer antar jeg at det er 0 ombyttinger
 
-        for (int i=1;i<a.length; i++){
+
+        for (int i=1;i<a.length; i++){ // bruker for-løkke for å finne antall ombyttinger
             if (a[i-1]>a[i]){
                 bytt(a, i-1, i);
                 antallOmbyttinger++;
@@ -54,7 +55,7 @@ public class Oblig1 {
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
         //throw new UnsupportedOperationException();
-        int antallSortert = 1;
+        int antallSortert = 1;  // minste antall hvis a ikke er sortert
         if (a.length==0){
             return 0;
         }
@@ -77,9 +78,9 @@ public class Oblig1 {
             if (a.length<2)
                 return a.length;
 
-        int antallUlike= 1;
+        int antallUlike= 1; // teller starter med 1
 
-        for (int i=1;i<a.length;++i){
+        for (int i=1;i<a.length;++i){ // finner antall ulike med for-løkke
             int j=0;
             for (int j=0; j<i;++j){
                 int verdi=a[i];
@@ -98,7 +99,7 @@ public class Oblig1 {
 
         if (a.length == 0)
             return;
-        while (left <= right) {
+        while (left <= right) { // bruker while-løkke for å dele i to sorterte deler
             if ((a[left] % 2 == 0) && !((a[right] % 2) == 0))
                 bytt(a, right++, left--);
             else if ((a[left]) % 2 == 0) {
@@ -135,47 +136,30 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
         //throw new UnsupportedOperationException();
+        if (s.isEmpty() && t.isEmpty())
+            return "";
+
+        String[] sSplit = s.split("");
+        String[] tSplit = t.split("");
+        String resultat = "";
 
 
-        char [] c= s.toCharArray();
-        char [] d= t.toCharArray();
-        int lengde= c.length+ d.length;
-
-        StringBuilder sb= new StringBuilder();
-        for (int i=0; j<lengde; ++i){
-            if (c.length< i){
-                sb.append(c[i]);
-            }
-            if (d.length<i){
-                sb.append(d[i]);
+        for (int i = 0; ; i++) {
+            if (tSplit.length > i || sSplit.length > i) {
+                if (sSplit.length > i)
+                    resultat += sSplit[i];
+                if (tSplit.length > i)
+                    resultat += tSplit[i];
+            } else {
+                return resultat;
             }
         }
 
-        return sb.toString();
     }
-
     /// 7b)
     public static String flett(String... s) {
         //throw new UnsupportedOperationException();
-        if (s.length==0)
-            return "";
-        int k= s[0].length();
-
-        for (int i= 1; i<s.length; ++i){
-            int stringlength= s[i].length();
-            if (stringlength> k)
-                k=stringlength;
-        }
-
-        StringBuilder stringBuilder= new StringBuilder ();
-
-        for (int i= 0; i<k; i++){
-            for (String t:s){
-                if (i<t.length()) stringBuilder.append(t.charAt(i));
-            }
-        }
-        return stringBuilder.toString();
-    }
+     
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new UnsupportedOperationException();
