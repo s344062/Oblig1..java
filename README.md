@@ -7,5 +7,14 @@ Oppgaven er levert av følgende studenter: Mohamed Abdullahi Abdi
 # Arbeidsfordeling
 
 I oppgaven har vi hatt følgende arbeidsfordeling: Jeg har gjort alle oppgavene alene.
+I oppgave 1; bruker jeg for-løkke for å finne den største verdien i tabellen.
+a b) her antar at det er 0 ombyttinger på starten og derettter bruker for-løkke til å finne antall ombyttinger som skjer.
+oppgave 2; Hvis tallene i a er ikke sortert så er minste antall 1 også bruker for løkke til å finne antall sortert.
+oppgave 3; bruker for-løkke til å finne antall usortert.
+oppgave 4; bruker while-løkke for å dele arrayet i to sorterte deler.
+oppgave 5; bruker for-løkke for rotasjon 
+oppgave 7 a)
+b)
+
 
 
