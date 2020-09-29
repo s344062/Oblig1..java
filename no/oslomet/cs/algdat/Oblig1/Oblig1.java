@@ -28,25 +28,34 @@ public class Oblig1 {
         if (a.length<= 0)
             {throw new NoSuchElementException("Tabellen er tom!");}
 
-        for (int i=1; i<a.length; i++){ // bruker for-løkke for å finne antall sammenligner
-            if (a[i-1]> a[i]){
-                bytt(a, i-1, i);
+        for( int i=0; i<a.length-1; i++){
+            if (a[i] > a[i+1]){
+
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1]= temp;
             }
         }
-        return a[a.length-1];
+        int aMaks= a[a.length-1];
+        return aMaks;
     }
 
     public static int ombyttinger(int[] a) {
         //throw new UnsupportedOperationException();
-        if (a.length<1){throw new NoSuchElementException("Tom tabell!");}
+        if (a.length==0){throw new NoSuchElementException("Tom tabell!");}
 
         int antallOmbyttinger= 0; //hvis ingen ombyttinger skjer antar jeg at det er 0 ombyttinger
 
 
-        for (int i=1;i<a.length; i++){ // bruker for-løkke for å finne antall ombyttinger
-            if (a[i-1]>a[i]){
-                bytt(a, i-1, i);
-                antallOmbyttinger++;
+        for (int j=0;j<a.length; j++){ // bruker for-løkke for å finne antall ombyttinger
+            if (j+1 != a.length){
+                if (a[j] > a[j+1]){
+                    antallOmbyttinger++;
+
+                    int temp= a[j]; // kode fra undervisning
+                    a[j] = a[j+1];
+                    a[j+1]= temp;
+                }
             }
         }
         return antallOmbyttinger;
@@ -175,7 +184,7 @@ public class Oblig1 {
         }
         return resultat;
     }
-    
+
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new UnsupportedOperationException();
