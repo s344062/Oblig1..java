@@ -13,8 +13,8 @@ oppgave 2; Hvis tallene i a er ikke sortert så er minste antall 1 også bruker 
 oppgave 3; bruker for-løkke til å finne antall usortert.
 oppgave 4; bruker while-løkke for å dele arrayet i to sorterte deler.
 oppgave 5; bruker for-løkke for rotasjon 
-oppgave 7 a)
-b)
-
+oppgave 7 a) bruker for-løkke for å flette s og t
+7 b) for- løkke og if setninger 
+for å flette sammen tegnstrenger i s.
 
 
