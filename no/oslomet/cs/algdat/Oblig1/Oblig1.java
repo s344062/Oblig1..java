@@ -25,7 +25,7 @@ public class Oblig1 {
 
      */
     public static int maks(int[] a) {
-        if (a.length<1)
+        if (a.length<= 0)
             {throw new NoSuchElementException("Tabellen er tom!");}
 
         for (int i=1; i<a.length; i++){ // bruker for-løkke for å finne antall sammenligner
@@ -157,9 +157,27 @@ public class Oblig1 {
 
     }
     /// 7b)
+
     public static String flett(String... s) {
         //throw new UnsupportedOperationException();
-     
+
+        String resultat = "";
+        boolean done = false;
+
+        for (int i = 0; !done; i++) {
+            done = true;
+
+            for (int j = 0; j < s.length; j++) {
+                String[] charet = s[j].split("");
+                if (charet.length > i) {
+                    done = false;
+                    resultat += charet[i];
+                }
+            }
+        }
+        return resultat;
+    }
+        return
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new UnsupportedOperationException();
